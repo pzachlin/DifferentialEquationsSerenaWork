@@ -1,0 +1,86 @@
+\documentclass{ximera}
+\input{../preamble.tex}
+
+\title{Spreadsheet Lab} \license{CC BY-NC-SA 4.0}
+
+\begin{document}
+
+\begin{abstract}
+\end{abstract}
+\maketitle
+
+\begin{onlineOnly}
+\section*{Spreadsheet Lab}
+\end{onlineOnly}
+ 
+Spreadsheets are a great way to analyze iterative processes such as the numerical methods presented here in Chapter 3.  In this lab you will implement the improved Euler method using a spreadsheet.
+ 
+ 
+\begin{exploration}\label{lab3.2:exp1}
+Example~\ref{example:3.2.1} asked us to use Euler's method with step sizes $h=0.1$ and $h=0.05$ to
+find approximate values of the solution of the initial value problem
+$$
+y'+2y=x^3e^{-2x},\quad y(0)=1
+$$
+at $x=0, 0.1, 0.2, 0.3, \ldots, 1.0$.
+ 
+The link below takes you to a spreadsheet which can be used to complete this exercise.  To use the spreadsheet, SAVE A COPY of the sheet.  The yellow boxes control the initial condition and the step size. 
+     
+\href{https://docs.google.com/spreadsheets/d/1lwpCOPT5r04jL-joCXHSBRkXJdSxftxX46OzJe2II2U/edit?usp=sharing}{LINK TO SPREADSHEET}
+
+The following video may be useful to you.
+
+\youtube{KmuhDz6xcTs}
+
+\href{https://docs.google.com/spreadsheets/d/1UZyfR-vJ-ALm6GqvgHudH_0z-KIjuA2OZvAzZBKa4hc/edit?usp=sharing}{THIS LINK WILL GIVE YOU THE SPREADSHEET CREATED IN THE VIDEO}
+
+\end{exploration}
+ 
+\begin{problem}\label{exer:3.2.1L}
+After working through Exploration \ref{lab3.2:exp1}, see if you can produce the table in Exploration~\ref{example:3.2.2} somewhere on your spreadsheet.
+\end{problem}
+
+\begin{problem}\label{exer:3.2.6L} 
+Try Exercise \ref{exer:3.2.6} (reproduced here) using the techniques you used in the Explorations above.
+
+\begin{problem}\label{exer:3.2.6} 
+Use the improved Euler method with step sizes $h=0.1$, $h=0.05$, and $h=0.025$ to find approximate values of the solution of the initial value problem
+$$
+y'+3y=7e^{4x},\quad y(0)=2
+$$
+at $x=0$, $0.1$, $0.2$, $0.3$, \dots, $1.0$. Compare these approximate
+values with the
+values of the exact solution $y=e^{4x}+e^{-3x}$, which can be obtained
+by the method of Section~2.1. Present your results in a table
+like Table~\ref{table:3.2.2}.
+
+\begin{solution}
+    {\small
+\begin{tabular}{|c|r|r|r|r|}\hline
+\multicolumn{1}{|c|}{$x$}&
+\multicolumn{1}{|c|}{$h=0.1$}&
+\multicolumn{1}{|c|}{$h=0.05$}&
+\multicolumn{1}{|c|}{$h=0.025$}&
+\multicolumn{1}{|c|}{Exact}\\ \hline
+0.0 &  2.000000000 &  2.000000000 &  2.000000000 &   2.000000000 \\
+0.1 &  2.257138644 &  2.238455342 &  2.234055168 &   2.232642918 \\
+0.2 &  2.826004666 &  2.786634110 &  2.777340360 &   2.774352565 \\
+0.3 &  3.812671926 &  3.747167263 &  3.731674025 &   3.726686582 \\
+0.4 &  5.387430580 &  5.285996803 &  5.261969043 &   5.254226636 \\
+0.5 &  7.813298361 &  7.660199197 &  7.623893064 &   7.612186259 \\
+0.6 & 11.489337756 & 11.260349005 & 11.206005869 &  11.188475269 \\
+0.7 & 17.015861211 & 16.674352914 & 16.593267820 &  16.567103199 \\
+0.8 & 25.292140630 & 24.783149862 & 24.662262731 &  24.623248150 \\
+0.9 & 37.662496723 & 36.903828191 & 36.723608928 &  36.665439956 \\
+1.0 & 56.134480009 & 55.003390448 & 54.734674836 &  54.647937102 \\
+\hline
+\end{tabular}}
+\end{solution}
+\end{problem}
+
+
+\end{problem}
+ 
+
+ 
+\end{document}

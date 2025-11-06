@@ -1,0 +1,258 @@
+%!TEX root = ../main.tex
+\documentclass{ximera}
+
+\input{../preamble.tex}
+
+
+
+\title{Solving ODEs with Sage}
+
+
+\begin{document}
+
+\begin{abstract}
+This activity shows how to use Sage to solve differential equations.
+
+\end{abstract}
+
+\maketitle
+
+The templates in this section provide sample Sage code. You can access our code through the link at the bottom of each template.  Feel free to modify the code and experiment to learn more! 
+ 
+You can write your own code using online Sage cells.  To access Sage cells online, go to the \href{https://sagecell.sagemath.org/}{Sage Math Cell Webpage}, enter your code, and press EVALUATE. 
+ 
+To ''save" or share your online code, click on the \emph{Share} button, select \emph{Permalink}, then copy the address directly from the browser window.  You can store this link to access your work later and share it with others.  You will need to get a new Permalink every time you modify the code.
+
+\begin{example}\label{ex:SageSlopeField}
+    Use the given code to plot the slope field for 
+    $$\frac{dy}{dt}=t-y$$
+
+    \begin{verbatim}
+#Enter your equation here
+f(t,y) = t-y; #y' = f(t,y)
+
+#Window range
+tlow = -2; thi = 10; ylow = -2; yhi = 10;
+
+#Plot slope field 
+p0 = plot_slope_field(f, (t,tlow,thi), (y,ylow,yhi));
+show(p0)
+    \end{verbatim}
+\href{https://sagecell.sagemath.org/?z=eJxFjTELgzAQhfdA_sMDhxqIYLtKtzq3dOkogokJhCSNEcm_72kp3d597-67qvdZJZSwJqj3OmYbPIxKijNdZ1kErshN6VA97WwyFjspBI37rUc5Ufnd4oyz6mX9FDak0c90nh3lK5pLh2wspXPbofxh-cHj9uECyV2ICtoqN4Gz2FIfiQ8HHw5eawn6uMslaQVNRe5WST4hSLaYsNWxFR_c9EEC&lang=sage&interacts=eJyLjgUAARUAuQ==}{Link to code.}
+
+\begin{observation}
+    Note the following aspects of the code:
+    \begin{itemize}
+        \item The hash tag symbol \# is used for comments.  
+        \item We used variables $\mathtt{tlow, thi, ylow, yhi}$ to assign max and min values along the axis to determine the size of our window.  We could have typed the min and max values directly into the slope field function, like this
+        \begin{verbatim}p0 = plot_slope_field(f, (t,-2,10), (y,-2,10));\end{verbatim}
+        We chose to not do this because if these values were used in multiple functions we would want to have one central place where they can be changed easily.
+    \end{itemize}
+\end{observation}
+\end{example}   
+
+\begin{problem}\label{prob:SageSlopeField}
+    Modify the code in Example \ref{ex:SageSlopeField} to plot slope fields for the given equations.  Practice adjusting the window range for a better view.
+
+\begin{enumerate}
+\item\label{ex:fig010302r}
+$$
+ y'=\frac{x^2-y^2}{1+x^2+y^2}
+ $$
+(See Example~\ref{fig010302})
+
+\item\label{ex:fig010303r}
+$$
+y'=1+xy^2
+$$
+(See Example~\ref{fig010303})
+
+\item\label{ex:fig010304r}
+$$
+y'=\frac{x-y}{1+x^2}
+$$
+(See Example~\ref{fig010304})
+\end{enumerate} 
+\end{problem}
+
+\begin{example}\label{ex:sageSlopeFieldAndSolutions}   
+The following code can be used to plot a slope field together with approximations to two different particular solutions to the equation
+\[
+\frac{dy}{dt}=-\cos t
+\]
+We would like for you to experiment with various functions $f(t,y)$, and various initial conditions.
+    \begin{verbatim}
+#Enter your equation here
+f(t,y) = -cos(t); #Right side of ODE y' = f(t,y)
+
+#Initial conditions & Solution Range
+t0 = 0; y01 = 2; y02 = 1; y03 = 0.5; y04 = 0.1; #Initial condition for a solution curve
+tlow = 0.0; thi = 20; ylow = -2; yhi = 10; #Window range
+
+#Solve ODE numerically
+def f2(t,y):
+    return [f(t,y[0])]
+T = ode_solver();
+T.function = f2;
+
+T.ode_solve(y_0=[y01],t_span=[tlow,thi],num_points=100);
+ysol1 = T.interpolate_solution();
+
+T.ode_solve(y_0=[y02],t_span=[tlow,thi],num_points=100);
+ysol2 = T.interpolate_solution();
+
+#Plot slope field itself with built-in Sage command, superimpose
+#plot of ODE solution with y(t0)=y0
+p0 = plot_slope_field(f, (t,tlow,thi), (y,ylow,yhi));
+p1 = plot(ysol1, (t, tlow, thi), color='blue');
+p2 = plot(ysol2, (t, tlow, thi), color='red');
+show(p0+p1+p2,xmin=tlow,xmax=thi,ymin=ylow,ymax=yhi,axes_labels=['$t$', '$y(t)$'],title="Direction Field for y'(t)=f(t,y)");
+ \end{verbatim}
+
+    \href{https://sagecell.sagemath.org/?z=eJyNU8GK2zAQvRv8D8M61DarBNttLw2-7RZ6atkN9BCCUWw5EciSKsmb6O87kneXQndpc5pM3nvz5o2S3UvHDHg1G2C_Zuq4knBmhqXJWDjiS2hh3StbuHIL2QM_nR1YPjBQI3y_uwefI2BBpkmaZN8kd5wK6JUceBCz8AEelZij8AOVJ1R2FZKqLfiqxqIJRYNFHYqP4afN51B-iiV2_1aFURmgYF-E-9k8BWGhLpGE4u7Mg3gYs3TXYVBs1tjMfnI5YN8sltA6unxicSk5T8zwngrh02RgI4xN3PBLmgB-DHOzkbCPa--rQ3lIkx3KqoF1NoiYotxiazPOso_2MKJmG4bsNq-gwndVu8cIDsR1VlPZ7oN9gr4PBB10WnHpbFtXVVDzSApp7TY8XEwrQV1UigHEgW_KN_8v3_xLPvshFJ5fKM1g5EwMwJ1lYoQLd2c4zly4NZfwSE8MTzVNVA4E7KwxzEkrizFnOig8v53X60W6L1xVtr5KEx2eRwB2cVQXRxUjAcz7ZYcSv3kSLkvwpmXwp-tnWhGzinCIeFgIvRLKtPlRzCyPhOZPQvMuwbAh4u1ZXQpd3er6VjfkOnHZRvR1otcWGcSH1uIptNAYoVdmO0GPTNh2n6_cKieQr3DXcpXjZbgTrL2544YtD-VrTDU8bp8jpl3-WTfl9jeO2Sb5&lang=sage&interacts=eJyLjgUAARUAuQ==}{Link to code.}
+\end{example}
+
+While the solver in the previous example used numerical methods like those in Chapter 3 to approximate particular solutions to certain initial value problems, it is also possible to use Sage to come up with the general solution for many differential equations.
+
+\begin{example}\label{ex:sageGeneralSolution}
+Find the general solution of the differential equation:
+\[
+\frac{dy}{dt} = t - y
+\]
+
+The Sage function $\mathtt{desolve}$ is used to find symbolic solutions of ODEs. The following Sage code shows how to solve the ODE above:
+
+\begin{verbatim}
+t = var('t')
+y = function('y')(t)
+de = diff(y, t) ==  t - y
+desolve(de, [y, t])
+
+
+\end{verbatim}
+
+\href{https://sagecell.sagemath.org/?z=eJwrUbBVKEss0lAvUdfk5aoE8tJK85JLMvPzNNQr1TU1SoCiKalA4ZTMtDSNSh2FEk0FW1sFhRIFXYVKkFRxfk5ZqkZKqo5CNEg2VhMApK8Wsg==&lang=sage&interacts=eJyLjgUAARUAuQ==}{Link to code.}
+
+\end{example}
+
+The same command can be used to compute a particular solution to an initial value problem.
+
+\begin{example}\label{ex:SageParticularSolutionPlot}
+Use the given code to solve the initial value problem.
+\[
+\frac{dy}{dt} = t - y,\quad y(1) = 3
+\]
+\begin{verbatim}
+t = var('t')
+y = function('y')(t)
+de = diff(y, t) ==  t - y
+desolve(de, [y, t], ics=[1,3])
+\end{verbatim}
+
+\href{https://sagecell.sagemath.org/?z=eJwVyTsKwCAQRdE-kD28zhFMEVK7ErEIfkAICnEizO6j5T2XYTHulxQrvW8yK381cGmVlChNPDWmybHkTGLAGtYCjAOyVm_PSBSTgVvXG5TQrTvN5fUPsgMZwg==&lang=sage&interacts=eJyLjgUAARUAuQ==}{Link to code.}
+
+The  solution of the initial value problem is: $\answer{((t - 1)e^{t} + 3e)e^{-t}}$.
+
+We can plot this solution using the following code.
+
+\begin{verbatim}
+t = var('t')
+y = function('y')(t)
+de = diff(y, t) ==  t - y
+soln = desolve(de, [y, t], ics=[1,3])
+plot(soln, (t, 0, 5),ymin=-1, ymax=6)
+\end{verbatim}
+\href{https://sagecell.sagemath.org/?z=eJwVjMEKgzAQRO-C_zC3bGCFSmlv-yXiQUwCAY2lbsX9-ya3mTePUQiu5UtOne87qy39yqr5KOTMedJKQ6w45JTIGOohAigGWN-dx1baGGu4IoXImJo0M_J6yjTyc64Pn-1Qai6DlPFgvDzbnosMI8P25Za3_wOROibu&lang=sage&interacts=eJyLjgUAARUAuQ==}{Link to code.}
+\end{example}
+
+
+% \begin{problem} In the answer box below, enter the general solution of the differential equation 
+
+% Use the variable $C$ for the constant of integration.
+
+% The general solution of the DE is: $\answer{((t - 1)e^{t} + C)e^{-t}}$.
+
+% \emph{Hint}: If you are getting an error, you are probably trying to enter $\_C$ as your constant of integration. Use the variable $C$ instead.
+% \end{problem}
+
+In an applied problem, a symbolic solution will rarely be available, and one must resort to numerical solutions. This is illustrated by the following example.
+
+\begin{example}
+    
+Let's consider the following model for a population with harvesting:
+\[
+\frac{dy}{dt}=ry\left(1-\frac{y}{t}\right)-h
+\]
+In this equation, the parameter $h$ represents a harvesting rate (in units of number of individuals per unit of time). Let's first try to solve this equation symbolically in Sage, for the parameter values $r=0.2$, $C=32$, $h=2.2$ and  the initial condition $y(0)=15$:
+
+\begin{verbatim}
+t = var('t')
+y = function('y')(t)
+r, C, h = 0.2, 32, 2.2
+de = diff(y, t) == r * y *(1 - y/C) - h
+soln = desolve(de, [y, t], ics=[0,15])
+soln
+\end{verbatim}
+
+\href{https://sagecell.sagemath.org/?z=eJwlS0sKwyAU3AveYXZqeE0TS5aucoyQRYlKhGLA2IC37wtdDPOvcLjeRauqjBSNXfzmraYja9WU0ZXTQpgJO3dDbwkvhu2tFD5w5FOMuhGqgXMo6NDQ6REPtOdsmHYpzuOT72lgcQXtA2G5LyshbadbBhqn1fx3P1TbJTw=&lang=sage&interacts=eJyLjgUAARUAuQ==}{Link to code.}
+
+Evaluating the cell above, we can see that the symbolic solution looks quite complicated. Notice that the function that represents the solution, $y(t)$, has not been isolated in the left-hand side of the equation. In other words, this the solution is given in implicit form. In cases like this, it may be preferable to use a numerical method. This can be done in Sage as shown in the following cell, using the function $\mathtt{desolve\_odeint}$. Notice that the interface for this function differs in a significant way from the function $\mathtt{odeint}$
+
+\begin{verbatim}
+y = var('y')
+r, C = 0.2, 32
+h = 2.2
+de = r * y *(1 - y/C) - h
+tvalues = srange(0, 20, 0.2)
+ic = 15
+yvalues = desolve_odeint(de, ic, tvalues, y)
+points(zip(tvalues, yvalues))
+\end{verbatim}
+
+\href{https://sagecell.sagemath.org/?z=eJxFjMEKwjAQRO-B_MPcmpS1thGPnvohEprFBkpbkhqIX--CoodlZ-ftTMUNxSfT1MZqlQijGH3nCBen1SyH60QEFpXQoqI1A06o59HKmrU6il-enIXn5NcHm57gZKREGuMkYLhqVX9vgfO2FL5vgeN6mMCEOBG-PYQqsX0TlM0r7ubvf4S1b7WlMgo=&lang=sage&interacts=eJyLjgUAARUAuQ==}{Link to code.}
+\end{example}
+
+\begin{problem} From the plot generated by the Sage cell above, we can conclude that the population $y(t)$:
+\begin{multipleChoice}
+\choice{Grows without bound as $t\to\infty$.}
+\choice{Stabilizes near a certain positive value as $t\to\infty$.}
+\choice[correct]{Becomes extinct at a certain finite value of $t$.}
+\choice{Oscillates around some value as $t\to\infty$.}
+\end{multipleChoice}
+\end{problem}
+
+\begin{problem} 
+Change the value of $h$ in the cell above to 1.5 and run the cell again. Experiment with the maximum value of $t$ specified in the statement:
+\[
+\mathtt{tvalues = srange(0, 20, 0.2)}
+\]
+Notice that, as you increase the maximum value of $t$, you may also want to increase the value of the step-size. Answer the following question based on your experiments:
+
+For the harvesting rate $h=2.2$ the population $y(t)$:
+\begin{multipleChoice}
+\choice{Grows without bound as $t\to\infty$.}
+\choice[correct]{Stabilizes near a certain positive value as $t\to\infty$.}
+\choice{Becomes extinct at a certain finite value of $t$.}
+\choice{Oscillates around some value as $t\to\infty$.}
+\end{multipleChoice}
+\end{problem}
+
+\begin{problem} It is of interest to determine what is the largest value of the harvesting rate $h$ we can choose so that we have a stable population in the model. Experiment with different values in the Sage cell above to determine this value approximately to three decimal places. 
+
+Notice that you may also have to adjust the maximum value of the time variable $t$, since the differential equation becomes unstable for certain values of $h$, which leads to numerical errors in the computation.
+
+The maximum value of the harvesting rate, to three decimal places is: $\answer{1.593}$
+\end{problem}
+
+\begin{example}\label{help}
+    One final Sage command that is very worthwhile knowing is the question mark.  You can use it to obtain documentation on any Sage command.  Here is an example.
+    
+\end{example}
+
+\begin{verbatim}
+? exp
+\end{verbatim}
+
+\href{https://sagecell.sagemath.org/?z=eJyzV0itKAAABE8BrQ==&lang=sage&interacts=eJyLjgUAARUAuQ==}{Link to code.}
+
+\end{document}

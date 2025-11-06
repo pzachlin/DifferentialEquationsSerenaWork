@@ -1,0 +1,101 @@
+\documentclass{ximera}
+\input{../preamble.tex}
+
+\title{Spreadsheet Lab} \license{CC BY-NC-SA 4.0}
+
+\begin{document}
+
+\begin{abstract}
+\end{abstract}
+\maketitle
+
+\begin{onlineOnly}
+\section*{Spreadsheet Lab}
+\end{onlineOnly}
+ 
+Spreadsheets are a great way to analyze iterative processes such as the numerical methods presented here in Chapter 3.  In this lab you will implement Euler's method using a spreadsheet.
+ 
+ 
+\begin{exploration}\label{lab3.1:exp1}
+Example~\ref{example:3.1.2} asked us to use Euler's method with step sizes $h=0.1$, $h=0.05$, and $h=0.025$ to
+find approximate values of the solution of the initial value problem
+$$
+y'+2y=x^3e^{-2x},\quad y(0)=1
+$$
+at $x=0, 0.1, 0.2, 0.3, \ldots, 1.0$.
+ 
+The link below takes you to a spreadsheet which can be used to complete this exercise.  To use the spreadsheet, SAVE A COPY of the sheet.  The yellow boxes control the initial condition and the step size. 
+     
+\href{https://docs.google.com/spreadsheets/d/1lwpCOPT5r04jL-joCXHSBRkXJdSxftxX46OzJe2II2U/edit?usp=sharing}{LINK TO SPREADSHEET}
+
+If you have not used spreadsheets much before, the following video may be useful to you.
+
+\youtube{SqBRqDSs_MI}
+
+\end{exploration}
+ 
+\begin{exploration}\label{lab3.1:exp2}
+ It is also not difficult to modify the spreadsheet in the previous exploration for use in other problems.  In this exploration you will try to modify the spreadsheet above to tackle this problem from Example~\ref{3.1.3}:
+
+Use Euler's method with step sizes $h=0.1$, $h=0.05$, and $h=0.025$ to
+find approximate values of the solution of the initial value problem
+$$
+y'=-2y^2+xy+x^2, y(0)=1,
+$$
+at $x=0, 0.1, 0.2, 0.3, \ldots, 1.0$.
+
+The following video guides you through the process of modifying the spreadsheet from \ref{lab3.1:exp1} for this problem.
+
+\youtube{D31luVRzm8U}
+
+\href{https://docs.google.com/spreadsheets/d/1iJa71Gz8ZEzl69le29bZCFcSTIq6gtpc_xJqqlc6MgE/edit?usp=sharing}{THIS LINK WILL GIVE YOU THE SPREADSHEET CREATED IN THE VIDEO}
+    
+\end{exploration}
+
+\begin{problem}\label{exer:3.1.1L}
+After working through Exploration \ref{lab3.1:exp1}, see if you can produce the table in Exploration~\ref{example:3.1.2} somewhere on your spreadsheet.
+\end{problem}
+
+\begin{problem}\label{exer:3.1.6L} 
+Try Exercise \ref{exer:3.1.6} (reproduced here) using the techniques you used in the Explorations above.
+
+Use Euler's method with step sizes $h=0.1$, $h=0.05$, and $h=0.025$ to
+find approximate values of the solution of the initial value problem
+$$
+y'+3y=7e^{4x},\quad y(0)=2
+$$
+at $x=0$, $0.1$, $0.2$, $0.3$, \dots, $1.0$. Compare these approximate values with the values of the exact solution $y=e^{4x}+e^{-3x}$, which can be obtained by the method of Section~2.1. Present your results in a table like Table~\ref{table:3.1.1}.
+
+\begin{solution}
+    {\small
+\begin{tabular}{|c|r|r|r|r|}\hline
+\multicolumn{1}{|c|}{$x$}&
+\multicolumn{1}{|c|}{$h=0.1$}&
+\multicolumn{1}{|c|}{$h=0.05$}&
+\multicolumn{1}{|c|}{$h=0.025$}&
+\multicolumn{1}{|c|}{Exact}\\ \hline
+0.0 &  2.000000000 &   2.000000000 &  2.000000000 &   2.000000000 \\
+0.1 &  2.100000000 &   2.169990965 &  2.202114518 &   2.232642918 \\
+0.2 &  2.514277288 &   2.649377900 &  2.713011720 &   2.774352565 \\
+0.3 &  3.317872752 &   3.527672599 &  3.628465025 &   3.726686582 \\
+0.4 &  4.646592772 &   4.955798226 &  5.106379369 &   5.254226636 \\
+0.5 &  6.719737638 &   7.171467977 &  7.393322991 &   7.612186259 \\
+0.6 &  9.876155616 &  10.538384528 & 10.865186799 &  11.188475269 \\
+0.7 & 14.629532397 &  15.605686107 & 16.088630652 &  16.567103199 \\
+0.8 & 21.751925418 &  23.197328550 & 23.913328531 &  24.623248150 \\
+0.9 & 32.399118931 &  34.545932627 & 35.610005377 &  36.665439956 \\
+1.0 & 48.298147362 &  51.492825643 & 53.076673685 &  54.647937102 \\
+\hline
+\end{tabular}}
+\end{solution}
+\end{problem}
+
+
+ 
+ 
+
+
+
+
+ 
+\end{document}
