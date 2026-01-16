@@ -86,8 +86,8 @@ We would like for you to experiment with various functions $f(t,y)$, and various
 f(t,y) = -cos(t); #Right side of ODE y' = f(t,y)
 
 #Initial conditions & Solution Range
-t0 = 0; y01 = 2; y02 = 1; #Initial condition for the solution curves
-tlow = 0.0; thi = 20; ylow = -2; yhi = 10; #Window range
+t0 = 0; y01 = 1; y02 = 2;  #Initial condition for two solution curves
+tlow = 0; thi = 20; ylow = -10; yhi = 10; #Window range
 
 #Solve ODE numerically
 def f2(t,y):
@@ -102,14 +102,14 @@ T.ode_solve(y_0=[y02],t_span=[tlow,thi],num_points=100);
 ysol2 = T.interpolate_solution();
 
 #Plot slope field itself with built-in Sage command, superimpose
-#plot of ODE solution with y(t0)=y0
+#plot of ODE solution with y(t0)=y01 and plot of ODE solution with y(t0)=y02
 p0 = plot_slope_field(f, (t,tlow,thi), (y,ylow,yhi));
 p1 = plot(ysol1, (t, tlow, thi), color='blue');
 p2 = plot(ysol2, (t, tlow, thi), color='red');
 show(p0+p1+p2,xmin=tlow,xmax=thi,ymin=ylow,ymax=yhi,axes_labels=['$t$', '$y(t)$'],title="Direction Field for y'(t)=f(t,y)");
  \end{verbatim}
 
-    \href{https://sagecell.sagemath.org/?z=eJyNU8GK2zAQvRv8D8M61DarBNttLw2-7RZ6atkN9BCCUWw5EciSKsmb6O87kneXQndpc5pM3nvz5o2S3UvHDHg1G2C_Zuq4knBmhqXJWDjiS2hh3StbuHIL2QM_nR1YPjBQI3y_uwefI2BBpkmaZN8kd5wK6JUceBCz8AEelZij8AOVJ1R2FZKqLfiqxqIJRYNFHYqP4afN51B-iiV2_1aFURmgYF-E-9k8BWGhLpGE4u7Mg3gYs3TXYVBs1tjMfnI5YN8sltA6unxicSk5T8zwngrh02RgI4xN3PBLmgB-DHOzkbCPa--rQ3lIkx3KqoF1NoiYotxiazPOso_2MKJmG4bsNq-gwndVu8cIDsR1VlPZ7oN9gr4PBB10WnHpbFtXVVDzSApp7TY8XEwrQV1UigHEgW_KN_8v3_xLPvshFJ5fKM1g5EwMwJ1lYoQLd2c4zly4NZfwSE8MTzVNVA4E7KwxzEkrizFnOig8v53X60W6L1xVtr5KEx2eRwB2cVQXRxUjAcz7ZYcSv3kSLkvwpmXwp-tnWhGzinCIeFgIvRLKtPlRzCyPhOZPQvMuwbAh4u1ZXQpd3er6VjfkOnHZRvR1otcWGcSH1uIptNAYoVdmO0GPTNh2n6_cKieQr3DXcpXjZbgTrL2544YtD-VrTDU8bp8jpl3-WTfl9jeO2Sb5&lang=sage&interacts=eJyLjgUAARUAuQ==}{Link to code.}
+    \href{https://sagecell.sagemath.org/?z=eJyNU8GOmzAQvSPxD6MlKqB1IuBYxG23Uk-tdiP1EEXIAZNYMrZrm0389x2b3VWlttpyGob3nt_MM9mjdMyAV4sB9nOhjisJF2ZYmkyFI76EDraDsoUrW8ie-PniwPKRgZrg28Mj-BwBKzJN0iT7KrnjVMCg5MiDmIVP8KzEEoWfqDyjsquQVLXgqxqLOhQNFk0L8KcATMqAuyqwbyrDYl6YRRmhrquQu_DAD5Jrb1uHOnZDlf3gcsQPZj0ffaKlFxYnkMvMDB-oED5NRjbB1MRxPqcJ4GOYW4yEQ5zxUB3LY5rsUVaNrLdBxBRli63dtMgh2sN9NG04ZL97BxW-r7oDznskrreayu4Q3BM0fiTooNeKS2e7uqqCmkdSWM1-x0M8WgnqolJcQDzwr_LN_8s3H8ln34XCrIXSDCbOxAjcWSYmuHJ3gdPChdtyCc_0zDCseaZyJGAXjcuctbK45kwHhdeL8p5epPvCVWUX8kcafIxr0kSHSxOQffTUR0_FRACDeRu2xDdPwh0gGH4ZBtH1K62IS41wiHhYCYMSynT5SSwsj4Tmd0LzT4JhY8Tbi7oWurrX9b1uyG3msovo20xvHTKID63VU2ihMUJvzPaCnpiw3SHfuE1OIN_gsOUmxwi5E6y7e-CGrTfqS1x_-A98jphu_d_uyvYX2y8xOg==&lang=sage&interacts=eJyLjgUAARUAuQ==}{Link to code.}
 \end{example}
 
 While the solver in the previous example used numerical methods like those in Chapter 3 to approximate particular solutions to certain initial value problems, it is also possible to use Sage to come up with the general solution for many differential equations.
