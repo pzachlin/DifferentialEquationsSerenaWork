@@ -189,6 +189,15 @@ Therefore, $x^2y^2e^x+2y+3x^2=c$.
 
 \begin{problem}\label{exer:2.5.15} Determine which equations are exact and solve them.
 $$\left(x^2e^{x^2+y}(2x^2+3)+4x\right)\,dx+(x^3e^{x^2+y}-12y^2)\,dy=0$$
+
+$M(x,y)=x^2e^{x^2+y}(2x^2+3)+4x$\;
+$N(x,y)=x^3e^{x^2+y}-12y^2$\;
+$M_y(x,y)=\answer{e^{x^2+y}(2x^4+3x^2)}$\;
+$N_x(x,y)=\answer{e^{x^2+y}(2x^4+3x^2)}$\;
+so the equation \wordChoice{\choice[correct]{IS}, \choice{IS NOT}} exact.
+\begin{question}
+    The solution to this exact equation can be written as $\answer{x^3e^{x^2+y}-4y^3+2x^2}=c$
+\end{question}
 \end{problem}
 
 \begin{problem}\label{exer:2.5.16} Determine which equations are exact and solve them.
@@ -288,6 +297,16 @@ $y=\left(\frac{e^x-1}{e^x+1}\right)^{1/3}$.
 
 \begin{problem}\label{exer:2.5.21} Solve the initial value problem.
 $$(\sin x-y\sin x-2\cos x)\,dx+\cos x\,dy=0,\quad y(0)=1$$
+
+$M(x,y)=\sin x-y\sin x-2\cos x$\;
+$N(x,y)=\cos x$\;
+$M_y(x,y)=\answer{-\sin x}$\;
+$N_x(x,y)=\answer{-\sin x}$\;
+so the equation \wordChoice{\choice[correct]{IS}, \choice{IS NOT}} exact.
+\begin{question}
+    The implicit solution to this exact equation can be written as $\answer{-\cos x+y\cos x-2\sin x}=\answer{0}$
+\end{question}
+
 \end{problem}
 
 \begin{problem}\label{exer:2.5.22} Solve the initial value problem.
@@ -393,6 +412,9 @@ Solve the exact equation
 \end{equation}
 
 implicitly.
+
+The solution to this exact equation can be written as $\answer{\frac{x^4y^4}{4}+x^2+\frac{3y^2}{2}}=c$
+
 \item % (b)
 For what choices of $(x_0,y_0)$ does
 Theorem~\ref{thmtype:2.3.1} imply that the initial value problem
@@ -554,6 +576,14 @@ $$
 (Ax+By)\,dx+(Cx+Dy)\,dy=0
 $$
 is exact.
+
+$M(x,y)=Ax+By$\;
+$N(x,y)=Cx+Dy$\;
+$M_y(x,y)=\answer{B}$\;
+$N_x(x,y)=\answer{C}$\;
+The equation is exact if and only if
+$\answer{B}=\answer{C}$
+
 \end{problem}
 
 \begin{problem}\label{exer:2.5.34}
