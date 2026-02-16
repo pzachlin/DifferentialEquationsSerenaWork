@@ -2,7 +2,7 @@
 # version of Ximera xake container to use (with xmlatex)
 #
 # : "${XAKE_BASE:=ximeralatex}"
-: "${XAKE_VERSION:=latest}"    # TEST: fixes frost/serve ?
+: "${XAKE_VERSION:=v2.7.9}"
 # : "${XAKE_VERSION:=v2.7.1}"
 # : "${XAKE_VERSION:=v2.7.2-full}"    # with texlive_full
 #
