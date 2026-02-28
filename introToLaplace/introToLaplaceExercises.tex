@@ -19,16 +19,26 @@ Find the Laplace transforms of the following functions by evaluating
 the integral $F(s)=\int_0^\infty e^{-st} f(t)\,dt$.
 
 \begin{enumerate}
-    \item $t$
+    \item $t$ \\
+    $F(s)=\int_0^\infty e^{-st} t\,dt = \answer{\frac{1}{s^2}}$
     
-    \begin{solution}
-        
-    \end{solution}
+    \item $te^{-t}$ \\
+    $F(s)=\int_0^\infty e^{-st} te^{-t}\,dt = \answer{\frac{1}{(s+1)^2}}$
     
-    \item $te^{-t}$ 
-    \item $\sinh bt$
-    \item $e^{2t}-3e^t$
-    \item $t^2$
+    \item $\sinh bt$ \\
+\begin{solution}
+    $F(s)=\int_0^\infty e^{-st} \sinh bt\,dt = \frac{b}{s^2 -b^2}$ if $s>|b|$ 
+\end{solution}
+    
+    \item $e^{2t}-3e^t$ \\
+\begin{solution}
+    $F(s)=\int_0^\infty e^{-st} (e^{2t}-3e^t)\,dt=\frac{-2s+5}{(s-1)(s-2)}$ if $s>2$
+\end{solution}
+    
+    \item $t^2$ \\
+    $F(s)=\int_0^\infty e^{-st} f(t)\,dt = \answer{\frac{2}{s^3}}$
+
+    
 \end{enumerate}
 \end{problem}
 
@@ -112,6 +122,11 @@ $\sin 2t +\cos4t\leftrightarrow\frac{2}{s^2+4}+\frac{s}{s^2+16} =\frac{s^3+2s^2+
 \int_0^\infty e^{-st}e^{t^2} dt=\infty
 $$
 for every real number $s$.
+
+\begin{solution}
+    If $s\le 0$, then $e^{-st}e^{t^2}\ge 1$ for all $t\ge 0$, so $\int_0^T e^{-st}e^{t^2} dt\ge T$. If $s>0$, then $e^{-st}e^{t^2} \ge 1$ if $t \ge s$; therefore, if $T>s$ then $\int_0^T e^{-st}e^{t^2} dt\ge T-s$. In either case, $\lim_{T\to\infty}\int_0^T e^{-st}e^{t^2} dt=\infty$.
+\end{solution}
+
 \end{problem}
 
 \begin{problem}\label{exer:8.1.4}
@@ -141,12 +156,33 @@ $f(t+)$, $f(t-)$, and $f(t)$ at each point of discontinuity.
 \begin{enumerate}
     \item $f(t)=\left\{\begin{array}{rl} e^{-t}, &
 0\le t<1,\\ e^{-2t}, & t\ge 1.\end{array}\right.$ 
+
+\begin{solution}
+    $\int_0^1 e^{-st}e^t dt +\int_1^\infty e^{-st}e^{-2t} dt = \int_0^1 e^{-(s+1)t} dt + \int_1^\infty e^{(s+2)t} dt = -\frac{e^{-(s+1)t}}{s+1}\Big|_0^1-\frac{e^{-(s+2)t}}{s+2}\Big|_1^\infty=\frac{1-e^{-(s+1)}}{s+1}+\frac{e^{-(s+2)}}{s+2}$ if $s>-1$.
+\end{solution}
+
     \item $f(t)=\left\{\begin{array}{rl} 1, & 0\le t<
 4,\\ t, & t\ge 4.\end{array}\right.$
+
+\begin{solution}
+    $\int_0^4 e^{-st} dt +\int_4^\infty e^{-st}t dt = -\frac{e^{-st}}{s}\Big|_0^4-e^{-st}\left[\frac{t}{s}+\frac{1}{s^2}\right]\Big|_4^\infty=\frac{1}{s}+e^{-4s} \left(\frac{1}{s^2} + \frac{3}{s}\right)$ if $s>0$.
+\end{solution}
+
     \item $f(t)=\left\{\begin{array}{rl} t, & 0\le
 t<1,\\ 1, & t\ge 1.\end{array}\right.$
+
+\begin{solution}
+     $\int_0^1 e^{-st}t dt +\int_1^\infty e^{-st} dt = -e^{-st}\left[\frac{t}{s}+\frac{1}{s^2}\right]\Big|_0^1 -\frac{e^{-st}}{s}\Big|_1^\infty=\frac{1-e^{-s}}{s^2}$ if $s>0$.
+\end{solution}
+
     \item $f(t)=\left\{\begin{array}{rl} te^t, & 0\le
 t<1,\\t e^t, & t\ge 1.\end{array}\right.$
+
+\begin{solution}
+    $\int_0^1 e^{-st}t dt +\int_1^\infty e^{-st}e^t dt = \int_0^1 e^{-(s-1)t}t dt + \int_1^\infty e^{-(s-1)t} dt = -e^{-(s-1)t}\left[\frac{t}{s-1}+\frac{1}{(s-1)^2}\right]\Big|_0^1-\frac{e^{-(s-1)t}}{s-1}\Big|_1^\infty
+    =\frac{1-e^{-(s-1)}}{(s-1)^2}$ if $s>1$.
+\end{solution}
+
 \end{enumerate}
 \end{problem}
 
